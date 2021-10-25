@@ -19,6 +19,34 @@ def clear_fields():
     text_result.delete(1.0 , 'end')
 
 
+def evaluation(operation) -> None:
+
+    input1 = text_score1.get("1.0","end")
+    input2 = text_score2.get("1.0","end")
+    
+    num1  =int(input1)
+    num2 = int(input2)
+    text_result.config(state=NORMAL)
+    if operation == "/":
+        text_result.delete(1.0 , 'end')
+        result = client.service.div(num1,num2)
+        text_result.insert(1.0 , result)
+    elif operation =="+":
+        text_result.delete(1.0 , 'end')
+        result = client.service.sum(num1,num2)
+        text_result.insert(1.0 , result)
+    elif operation == "-":
+        text_result.delete(1.0 , 'end') 
+        result = client.service.minus(num1,num2)
+        text_result.insert(1.0, result)
+    elif operation == "*":
+        text_result.delete(1.0 , 'end') 
+        result = client.service.prod(num1,num2)
+        text_result.insert(1.0, result)
+    else:
+        text_result.insert(1.0, "error")
+
+    text_result.config(state=DISABLED)
 root = tk.Tk()
 root.geometry("300x275")
 text_score1 = tk.Text(root, height=1 , width=7 )
