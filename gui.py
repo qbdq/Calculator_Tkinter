@@ -20,8 +20,6 @@ def clear_button():
 
 
 def button_add(number):
-    if equal == True:
-        e.delete(0,"end")
     e.insert("end",number)
 
 
@@ -78,6 +76,7 @@ root.title("Calculator using SOAP Services")
 e = Entry(root,width=40, borderwidth=5)
 e.grid(row=0 , column = 0, columnspan=4, padx=5, pady=5)
 
+# Defining buttons
 button_1  = Button(root , text = "1" ,padx =40 , pady= 20 , command =lambda :button_add(1))
 button_2  = Button(root , text = "2" ,padx =40 , pady= 20 , command =lambda :button_add(2))
 button_3  = Button(root , text = "3" ,padx =40 , pady= 20 , command =lambda :button_add(3))
@@ -95,6 +94,9 @@ button_min  =  Button(root , text = "-"     ,padx =38 , pady= 20 , command =lamb
 button_prod =  Button(root , text = "*"     ,padx =38 , pady= 20 , command =lambda :button_operation('*'))
 button_div  =  Button(root , text = "/"     ,padx =38 , pady= 20 , command =lambda :button_operation('/'))
 button_equal = Button(root , text = "="     ,padx =39 , pady= 20 , command =lambda :equal_operation())
+
+
+
 # * Adding buttons to the screen 
 
 button_1.grid   (column =0 , row = 3 )
@@ -117,76 +119,6 @@ button_0.grid     (column =1 , row = 4)
 button_equal.grid (column =2 , row = 4)
 button_prod.grid  (column =3 , row = 4)
 
-"""
-
-
-
-
-
-
-def clear_fields():
-    text_score1.delete(1.0 , 'end')
-    text_score2.delete(1.0 , 'end')  
-    text_result.delete(1.0 , 'end')
-
-
-def evaluation(operation) -> None:
-
-    input1 = text_score1.get("1.0","end")
-    input2 = text_score2.get("1.0","end")
-    
-    num1  =int(input1)
-    num2 = int(input2)
-    text_result.config(state=NORMAL)
-    if operation == "/":
-        text_result.delete(1.0 , 'end')
-        result = client.service.div(num1,num2)
-        text_result.insert(1.0 , result)
-    elif operation =="+":
-        text_result.delete(1.0 , 'end')
-        result = client.service.sum(num1,num2)
-        text_result.insert(1.0 , result)
-    elif operation == "-":
-        text_result.delete(1.0 , 'end') 
-        result = client.service.minus(num1,num2)
-        text_result.insert(1.0, result)
-    elif operation == "*":
-        text_result.delete(1.0 , 'end') 
-        result = client.service.prod(num1,num2)
-        text_result.insert(1.0, result)
-    else:
-        text_result.insert(1.0, "error")
-
-    text_result.config(state=DISABLED)
-
-
-text_score1 = tk.Text(root, height=1 , width=7 )
-text_score1.grid(columnspan=1 , row=1 , column=2 ,pady= 10 , padx=5)
-
-text_score2 = tk.Text(root, height=1 , width=7 )
-text_score2.grid(columnspan=1 , row=1 , column=3, pady= 10, padx= 5)
-
-
-btn_1 = tk.Button(root , text="+" ,width=5 , font=("arial",14)  , command=lambda: evaluation("+"))
-btn_1.grid(row=2 , column=1 , padx=4)
-
-btn_2 = tk.Button(root , text="-" ,width=5 , font=("arial",14)  , command=lambda: evaluation("-"))
-btn_2.grid(row=2 , column=2 , padx=4)
-
-btn_3 = tk.Button(root , text="*" ,width=5 , font=("arial",14)  , command=lambda: evaluation("*"))
-btn_3.grid(row=2 , column=3 , padx=4)
-
-btn_3 = tk.Button(root , text="/" ,width=5 , font=("arial",14)  , command=lambda: evaluation("/"))
-btn_3.grid(row=2 , column=4 , padx=4)
-
-
-text_result = tk.Text(root, height=2 , width=16 )
-text_result.grid(columnspan=5 , row=3 , column=1, pady= 10, padx= 5)
-
-
-btn_clear = tk.Button(root , text="C" ,width=5 , font=("arial",14)  , command=lambda :clear_fields())
-btn_clear.grid(row=5 , columnspan=10 , pady=6)
-"""
 
 root.mainloop()
 
